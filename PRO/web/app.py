@@ -56,9 +56,9 @@ def display_page(pathname):
 home.homeCallBacks(app)
 channels.ChannelCallBacks(app)
 url.urlCallBacks(app)
-topic.TopiCallBack(app)
+
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server()
     
     

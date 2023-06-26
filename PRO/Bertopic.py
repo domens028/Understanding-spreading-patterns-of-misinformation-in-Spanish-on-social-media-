@@ -27,7 +27,7 @@ def analisis():
     topics, probs = topic_model.fit_transform(docs)
     topic_model.save("BertopicModel1")
     output = topic_model.get_topic_info()
-    output.to_csv('tables/pages/bertopicResults.csv')
+    output.to_csv('bertopicResults.csv')
     
     print('Acaba la ejecución del modelo')
 

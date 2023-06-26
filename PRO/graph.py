@@ -17,7 +17,7 @@ def GraphCreation():
     valor_anterior = 0
     df = pd.read_csv('data_clean.csv')
     pivot_table = df.pivot_table(index = ["url","date"], columns =["channel"], values = "id", aggfunc = "count")
-    pivot_table.to_csv('prueba.csv')
+    
     
     #Creamos el Graph
     G = nx.Graph()
@@ -44,6 +44,12 @@ def GraphCreation():
                 fila_anterior = row_label
                 
     nx.write_edgelist(G, path="grid.edgelist", delimiter=":")
+    # Escribir el diccionario en un archivo JSON
+    node_dict = {node: i for i, node in enumerate(G.nodes)}
+    with open('GraphNodes.csv', 'w') as f:
+        for key in node_dict.keys():
+            f.write("%s,%s\n"%(key,node_dict[key]))
+    
     return G
 
 def printAdjacencyMatrix(G):
@@ -84,3 +90,6 @@ def printGraph():
     plt.tight_layout()
     plt.savefig("grafo_optimizado.png", dpi=300)
     plt.show()
+    
+    
+printGraph()
